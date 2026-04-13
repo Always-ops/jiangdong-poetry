@@ -1,26 +1,139 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink:            #1c1917;
+  --color-ink-light:      #44403c;
+  --color-ink-muted:      #78716c;
+  --color-paper:          #faf6ef;
+  --color-paper-warm:     #f5ede0;
+  --color-paper-dark:     #ede4d4;
+  --color-vermillion:     #b5271a;
+  --color-vermillion-lt:  #dc3820;
+  --color-jade:           #2d6a4f;
+  --color-gold:           #b7862a;
+  --color-border:         #d6c9b0;
+
+  --font-serif: var(--font-noto-serif);
+  --font-sans:  var(--font-noto-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-serif), "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* ── Paper grain texture ── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Load animations (hero — fire on mount) ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes expandX {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.65; }
+}
+
+.anim-up   { animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-fade { animation: fadeIn   0.9s ease both; }
+.anim-line { animation: expandX  0.7s cubic-bezier(0.22, 1, 0.36, 1) both; transform-origin: left center; }
+
+/* ── Scroll-reveal (toggled via JS IntersectionObserver) ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity   0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Utilities ── */
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.poem-line {
+  font-size: 1.125rem;
+  line-height: 2.2;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--color-vermillion);
+  color: var(--color-vermillion);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  padding: 0.2em 0.5em;
+  transition: background 0.2s, color 0.2s;
+}
+.seal:hover {
+  background: var(--color-vermillion);
+  color: var(--color-paper);
+}
+
+.divider-plum {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-border);
+}
+.divider-plum::before,
+.divider-plum::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Card lift ── */
+.card-lift {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-lift:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 5px 5px 0 var(--color-border);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-paper-dark); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-ink-muted); }
+
+::selection { background: rgba(181, 39, 26, 0.14); color: var(--color-ink); }
