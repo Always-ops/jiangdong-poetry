@@ -75,7 +75,7 @@ export default function PoemsPage() {
                     <span className="text-xs text-[var(--color-ink-muted)] tracking-widest
                                      translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100
                                      transition-all duration-300">
-                      全文 →
+                      注释 赏析 →
                     </span>
                   </div>
                 </div>
