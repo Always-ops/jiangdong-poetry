@@ -266,7 +266,7 @@ export default function HomePage() {
             <Link href={`/poems/${yuewang.id}`}
               className="inline-flex items-center gap-2 text-xs tracking-[0.25em] text-[var(--color-ink-muted)]
                          hover:text-[var(--color-vermillion)] transition-colors duration-200 group">
-              查看全文
+              查看注释 赏析
               <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
             </Link>
           </Reveal>
@@ -345,7 +345,7 @@ export default function HomePage() {
             <Link href={`/poems/${jianhv.id}`}
               className="inline-flex items-center gap-2 text-xs tracking-[0.25em] text-[var(--color-ink-muted)]
                          hover:text-[var(--color-vermillion)] transition-colors duration-200 group">
-              查看全文
+              查看注释 赏析
               <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
             </Link>
           </Reveal>
