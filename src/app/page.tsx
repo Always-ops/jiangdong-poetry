@@ -438,12 +438,10 @@ export default function HomePage() {
         <Reveal className="max-w-xl mx-auto text-center">
           <p className="text-xl md:text-2xl font-light text-[var(--color-ink-light)]
                         tracking-[0.2em] leading-loose mb-5">
-            「诗者，志之所之也。
-            <br />
-            在心为志，发言为诗。」
+            「尚有后人续春秋。」
           </p>
           <p className="text-[10px] text-[var(--color-border)] tracking-[0.4em]">
-            — 《毛诗序》
+            — 江东少女
           </p>
         </Reveal>
       </section>
