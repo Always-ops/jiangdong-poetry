@@ -91,8 +91,8 @@ export default function HomePage() {
         {/* 左侧朱砂竖线装饰 */}
         <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[var(--color-vermillion)] opacity-70" />
 
-        {/* 推背图 — 绝对定位，从45%处，上下留边 */}
-        <div className="absolute top-[18%] bottom-[4%] left-[45%] right-[3%] z-0">
+        {/* 推背图 — 桌面显示，手机隐藏 */}
+        <div className="hidden md:block absolute top-[18%] bottom-[4%] left-[45%] right-[3%] z-0">
           <Image
             src="/tuibei-46.png"
             alt="推背图第四十六象 — 有一军人身带弓"
@@ -115,7 +115,7 @@ export default function HomePage() {
 
         {/* ── 诗词内容（左侧，z层在图之上） ── */}
         <div className="relative z-10 flex flex-col justify-center min-h-[100svh]
-                        px-8 md:px-14 py-20 max-w-[58%]">
+                        px-8 md:px-14 py-20 w-full md:max-w-[58%]">
 
           {/* 近作小标 */}
           <Reveal className="flex items-center gap-4 mb-8">
@@ -189,8 +189,8 @@ export default function HomePage() {
       <section className="relative min-h-[100svh] overflow-hidden
                           bg-[var(--color-paper)] border-t border-[var(--color-border)]">
 
-        {/* 配图 — 绝对定位右侧 */}
-        <div className="absolute top-[30%] bottom-[4%] left-[48%] right-[3%] z-0">
+        {/* 配图 — 桌面显示，手机隐藏 */}
+        <div className="hidden md:block absolute top-[30%] bottom-[4%] left-[48%] right-[3%] z-0">
           <Image
             src="/yuewang-tai.png"
             alt="登会稽越王台"
@@ -212,7 +212,7 @@ export default function HomePage() {
 
         {/* 诗词内容 */}
         <div className="relative z-10 flex flex-col justify-center min-h-[100svh]
-                        px-8 md:px-14 py-20 max-w-[56%]">
+                        px-8 md:px-14 py-20 w-full md:max-w-[56%]">
 
           <Reveal className="flex items-center gap-4 mb-8">
             <div className="w-6 h-px bg-[var(--color-border)]" />
@@ -302,7 +302,7 @@ export default function HomePage() {
           </Reveal>
 
           {/* 八行律诗，左右两列紧排 */}
-          <div className="grid grid-cols-[auto_auto] w-fit gap-x-2 gap-y-3 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-[auto_auto] md:w-fit gap-x-2 gap-y-3 mb-12">
             {jianhv.lines.map((line, i) => (
               <Reveal key={i} delay={180 + i * 70}>
                 <p className="text-xl md:text-2xl lg:text-3xl font-medium
