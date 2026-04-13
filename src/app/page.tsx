@@ -91,7 +91,7 @@ export default function HomePage() {
         {/* 左侧朱砂竖线装饰 */}
         <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[var(--color-vermillion)] opacity-70" />
 
-        {/* 推背图 — 桌面显示，手机隐藏 */}
+        {/* 推背图 — 桌面绝对定位右侧 */}
         <div className="hidden md:block absolute top-[18%] bottom-[4%] left-[45%] right-[3%] z-0">
           <Image
             src="/tuibei-46.png"
@@ -179,6 +179,20 @@ export default function HomePage() {
               <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
             </Link>
           </Reveal>
+
+          {/* 手机端配图 */}
+          <Reveal delay={800} className="block md:hidden mt-10 relative w-full h-[80vw]">
+            <Image
+              src="/tuibei-46.png"
+              alt="推背图第四十六象"
+              fill
+              className="object-contain"
+              style={{ filter: "sepia(0.08) contrast(1.03)", objectPosition: "left top" }}
+            />
+            <p className="absolute bottom-0 right-0 text-[9px] tracking-[0.4em] text-[var(--color-ink-muted)]">
+              推背图 · 第四十六象
+            </p>
+          </Reveal>
         </div>
 
       </section>
@@ -255,6 +269,20 @@ export default function HomePage() {
               查看全文
               <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
             </Link>
+          </Reveal>
+
+          {/* 手机端配图 */}
+          <Reveal delay={800} className="block md:hidden mt-10 relative w-full h-[80vw]">
+            <Image
+              src="/yuewang-tai.png"
+              alt="登会稽越王台"
+              fill
+              className="object-contain"
+              style={{ filter: "sepia(0.06) contrast(1.02)", objectPosition: "left top" }}
+            />
+            <p className="absolute bottom-0 right-0 text-[9px] tracking-[0.4em] text-[var(--color-ink-muted)]">
+              越王台 · 配图
+            </p>
           </Reveal>
         </div>
       </section>
