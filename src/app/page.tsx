@@ -4,6 +4,7 @@ import { myPoems } from "@/lib/myPoems";
 import { masters } from "@/lib/masters";
 import MasterCard from "@/components/MasterCard";
 import Reveal from "@/components/Reveal";
+import QijueMobileSection from "@/components/QijueMobileSection";
 
 const hero      = myPoems[0];             // 禅宗一（首屏）
 const newWork   = myPoems[2];             // 七绝（第二屏）
@@ -85,115 +86,100 @@ export default function HomePage() {
       {/* ══════════════════════════════════════
           第二屏 — 江东少女 近作
       ══════════════════════════════════════ */}
-      <section className="relative min-h-[100svh] overflow-hidden
-                          bg-[var(--color-paper-warm)] border-t border-[var(--color-border)]">
+      <section className="border-t border-[var(--color-border)]">
 
-        {/* 左侧朱砂竖线装饰 */}
-        <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[var(--color-vermillion)] opacity-70" />
+        {/* ── 桌面端（md+）：左文右图，原有布局 ── */}
+        <div className="hidden md:block relative min-h-[100svh] overflow-hidden bg-[var(--color-paper-warm)]">
 
-        {/* 推背图 — 桌面绝对定位右侧 */}
-        <div className="hidden md:block absolute top-[18%] bottom-[4%] left-[45%] right-[3%] z-0">
-          <Image
-            src="/tuibei-46.png"
-            alt="推背图第四十六象 — 有一军人身带弓"
-            fill
-            className="object-contain"
-            style={{ filter: "sepia(0.08) contrast(1.03)", objectPosition: "left top" }}
-            priority
-          />
-          <p className="absolute bottom-4 right-4 text-[9px] tracking-[0.4em] text-[var(--color-ink-muted)]">
-            推背图 · 第四十六象
-          </p>
-        </div>
+          {/* 左侧朱砂竖线装饰 */}
+          <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[var(--color-vermillion)] opacity-70" />
 
-        {/* 极淡背景字 */}
-        <span aria-hidden="true"
-          className="pointer-events-none select-none absolute left-[6%] bottom-10
-                     text-[28vw] font-light leading-none text-[var(--color-ink)] opacity-[0.025]">
-          绝
-        </span>
-
-        {/* ── 诗词内容（左侧，z层在图之上） ── */}
-        <div className="relative z-10 flex flex-col justify-center min-h-[100svh]
-                        px-8 md:px-14 py-20 w-full md:max-w-[58%]">
-
-          {/* 近作小标 */}
-          <Reveal className="flex items-center gap-4 mb-8">
-            <div className="w-6 h-px bg-[var(--color-border)]" />
-            <span className="text-[10px] tracking-[0.5em] text-[var(--color-ink-muted)] uppercase">
-              近作 · New Work
-            </span>
-          </Reveal>
-
-          {/* 大标题 */}
-          <Reveal delay={60}>
-            <h2 className="text-[18vw] md:text-[14vw] lg:text-[11vw] font-medium leading-none
-                           tracking-[0.05em] text-[var(--color-ink)] mb-2">
-              七绝
-            </h2>
-          </Reveal>
-
-          {/* 形式标签 + 署名（同一行） */}
-          <Reveal delay={120}>
-            <div className="flex items-center gap-28 mt-8 mb-12">
-              <span className="seal text-[9px] px-2 py-0.5">{newWork.form}</span>
-              <span className="text-sm tracking-[0.25em] text-[var(--color-vermillion)] font-medium whitespace-nowrap">
-                江东少女（原创）
-              </span>
-            </div>
-          </Reveal>
-
-          {/* 四行七绝 */}
-          <div className="space-y-4 mb-12">
-            {newWork.lines.map((line, i) => (
-              <Reveal key={i} delay={180 + i * 100}>
-                <p className="text-2xl md:text-3xl lg:text-4xl font-medium
-                               tracking-[0.2em] text-[var(--color-ink)]">
-                  {line}
-                </p>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* 底部标签 */}
-          <Reveal delay={600}>
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-px bg-[var(--color-border)]" />
-              <div className="flex gap-2 flex-wrap">
-                {newWork.tags?.map((tag) => (
-                  <span key={tag}
-                    className="text-[10px] text-[var(--color-ink-muted)] tracking-widest
-                               border border-[var(--color-border)] px-2 py-0.5">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={700} className="mt-8">
-            <Link href="/poems"
-              className="inline-flex items-center gap-2 text-xs tracking-[0.25em] text-[var(--color-ink-muted)]
-                         hover:text-[var(--color-vermillion)] transition-colors duration-200 group">
-              查看全部诗稿
-              <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
-            </Link>
-          </Reveal>
-
-          {/* 手机端配图 */}
-          <Reveal delay={800} className="block md:hidden mt-10 relative w-full h-[80vw]">
+          {/* 推背图 — 右侧绝对定位 */}
+          <div className="absolute top-[18%] bottom-[4%] left-[45%] right-[3%] z-0">
             <Image
               src="/tuibei-46.png"
-              alt="推背图第四十六象"
+              alt="推背图第四十六象 — 有一军人身带弓"
               fill
               className="object-contain"
               style={{ filter: "sepia(0.08) contrast(1.03)", objectPosition: "left top" }}
+              priority
             />
-            <p className="absolute bottom-0 right-0 text-[9px] tracking-[0.4em] text-[var(--color-ink-muted)]">
+            <p className="absolute bottom-4 right-4 text-[9px] tracking-[0.4em] text-[var(--color-ink-muted)]">
               推背图 · 第四十六象
             </p>
-          </Reveal>
+          </div>
+
+          {/* 极淡背景字 */}
+          <span aria-hidden="true"
+            className="pointer-events-none select-none absolute left-[6%] bottom-10
+                       text-[28vw] font-light leading-none text-[var(--color-ink)] opacity-[0.025]">
+            绝
+          </span>
+
+          {/* 诗词内容（左侧） */}
+          <div className="relative z-10 flex flex-col justify-center min-h-[100svh] px-14 py-20 max-w-[58%]">
+
+            <Reveal className="flex items-center gap-4 mb-8">
+              <div className="w-6 h-px bg-[var(--color-border)]" />
+              <span className="text-[10px] tracking-[0.5em] text-[var(--color-ink-muted)] uppercase">
+                近作 · New Work
+              </span>
+            </Reveal>
+
+            <Reveal delay={60}>
+              <h2 className="text-[14vw] lg:text-[11vw] font-medium leading-none
+                             tracking-[0.05em] text-[var(--color-ink)] mb-2">
+                七绝
+              </h2>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <div className="flex items-center gap-28 mt-8 mb-12">
+                <span className="seal text-[9px] px-2 py-0.5">{newWork.form}</span>
+                <span className="text-sm tracking-[0.25em] text-[var(--color-vermillion)] font-medium whitespace-nowrap">
+                  江东少女（原创）
+                </span>
+              </div>
+            </Reveal>
+
+            <div className="space-y-4 mb-12">
+              {newWork.lines.map((line, i) => (
+                <Reveal key={i} delay={180 + i * 100}>
+                  <p className="text-3xl lg:text-4xl font-medium tracking-[0.2em] text-[var(--color-ink)]">
+                    {line}
+                  </p>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal delay={600}>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-px bg-[var(--color-border)]" />
+                <div className="flex gap-2 flex-wrap">
+                  {newWork.tags?.map((tag) => (
+                    <span key={tag}
+                      className="text-[10px] text-[var(--color-ink-muted)] tracking-widest
+                                 border border-[var(--color-border)] px-2 py-0.5">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={700} className="mt-8">
+              <Link href="/poems"
+                className="inline-flex items-center gap-2 text-xs tracking-[0.25em] text-[var(--color-ink-muted)]
+                           hover:text-[var(--color-vermillion)] transition-colors duration-200 group">
+                查看全部诗稿
+                <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
+              </Link>
+            </Reveal>
+          </div>
         </div>
+
+        {/* ── 手机端：全屏背景图叠层 + 点击播放 ── */}
+        <QijueMobileSection poem={newWork} />
 
       </section>
 
