@@ -49,14 +49,26 @@ export default function QijueMobileSection({ poem }: { poem: MyPoem }) {
         </p>
 
         {/* 大标题 */}
-        <h2 className="text-[26vw] font-medium leading-none tracking-[0.04em] text-[var(--color-ink)] mb-6">
+        <h2
+          className="text-[26vw] font-semibold leading-none tracking-[0.04em] text-[var(--color-ink)] mb-6"
+          style={{
+            textShadow:
+              "0 0 14px rgba(245,237,224,0.95), 0 0 28px rgba(245,237,224,0.75), 0 2px 2px rgba(245,237,224,0.9)",
+          }}
+        >
           七绝
         </h2>
 
         {/* 形式印章 + 署名 */}
         <div className="flex items-center gap-5 mb-7">
           <span className="seal text-[9px] px-2 py-0.5">{poem.form}</span>
-          <span className="text-sm tracking-[0.25em] text-[var(--color-vermillion)] font-medium whitespace-nowrap">
+          <span
+            className="text-sm tracking-[0.25em] text-[var(--color-vermillion)] font-semibold whitespace-nowrap"
+            style={{
+              textShadow:
+                "0 0 8px rgba(245,237,224,0.95), 0 0 16px rgba(245,237,224,0.7)",
+            }}
+          >
             江东少女（原创）
           </span>
         </div>
@@ -67,8 +79,14 @@ export default function QijueMobileSection({ poem }: { poem: MyPoem }) {
         {/* 四行诗句 */}
         <div className="space-y-5 mb-14">
           {poem.lines.map((line, i) => (
-            <p key={i}
-               className="text-[6.8vw] font-medium tracking-[0.28em] text-[var(--color-ink)]">
+            <p
+              key={i}
+              className="text-[6.8vw] font-semibold tracking-[0.28em] text-[var(--color-ink)]"
+              style={{
+                textShadow:
+                  "0 0 10px rgba(245,237,224,0.98), 0 0 20px rgba(245,237,224,0.85), 0 0 4px rgba(245,237,224,1), 0 1px 2px rgba(245,237,224,0.9)",
+              }}
+            >
               {line}
             </p>
           ))}
