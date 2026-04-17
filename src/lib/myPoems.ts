@@ -41,7 +41,7 @@ export const myPoems: MyPoem[] = [
     id: "qi-jue-song-mao",
     title: "七绝",
     form: "七言绝句",
-    tags: ["边塞", "豪气", "历史"],
+    tags: ["张又侠", "邵雍", "推背图"],
     lines: [
       "李唐江山三世劫，",
       "尽道须眉缚苍龙。",
