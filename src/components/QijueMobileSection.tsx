@@ -77,7 +77,7 @@ export default function QijueMobileSection({ poem }: { poem: MyPoem }) {
         <div className="w-14 h-[1.5px] bg-[var(--color-vermillion)] mb-10 opacity-70" />
 
         {/* 四行诗句 */}
-        <div className="space-y-5 mb-14">
+        <div className="space-y-5 mb-10">
           {poem.lines.map((line, i) => (
             <p
               key={i}
@@ -91,6 +91,23 @@ export default function QijueMobileSection({ poem }: { poem: MyPoem }) {
             </p>
           ))}
         </div>
+
+        {/* 标签 */}
+        {poem.tags && poem.tags.length > 0 && (
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {poem.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-[11px] tracking-[0.2em] text-[var(--color-ink)] border border-[var(--color-ink-muted)]/50 px-2.5 py-1 bg-[var(--color-paper-warm)]/80"
+                style={{
+                  textShadow: "0 0 6px rgba(245,237,224,0.9)",
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* 播放提示 — 未播放时显示，播放后渐隐 */}
         <div className={`flex items-center gap-2 transition-opacity duration-700 ${playing ? "opacity-0" : "opacity-50"}`}>
