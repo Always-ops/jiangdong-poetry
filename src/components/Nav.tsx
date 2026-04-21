@@ -4,11 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/", label: "首页" },
-  { href: "/poems", label: "江东少女" },
-{ href: "/master/wang-jingwei", label: "汪精卫" },
-  { href: "/master/zheng-xiaoxu", label: "郑孝胥" },
-  { href: "/about", label: "社志" },
+  { href: "/", label: "首页", featured: false },
+  { href: "/poems", label: "江东少女", featured: true },
+  { href: "/master/wang-jingwei", label: "汪精卫", featured: false },
+  { href: "/master/zheng-xiaoxu", label: "郑孝胥", featured: false },
+  { href: "/about", label: "社志", featured: false },
 ];
 
 export default function Nav() {
@@ -49,11 +49,14 @@ export default function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className={`whitespace-nowrap px-3 py-1.5 text-[11px] tracking-[0.12em] transition-colors duration-150 rounded-none ${
-                isActive(link.href)
+              className={`whitespace-nowrap px-3 py-1.5 tracking-[0.12em] transition-colors duration-150 rounded-none
+                ${link.featured ? "text-[14px] font-medium" : "text-[11px]"}
+                ${isActive(link.href)
                   ? "text-[var(--color-vermillion)] border-b border-[var(--color-vermillion)]"
-                  : "text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]"
-              }`}
+                  : link.featured
+                    ? "text-[var(--color-ink)] hover:text-[var(--color-vermillion)]"
+                    : "text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]"
+                }`}
             >
               {link.label}
             </Link>
