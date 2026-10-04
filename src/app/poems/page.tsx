@@ -70,7 +70,7 @@ export default function PoemsPage() {
                   <div className="hidden md:flex flex-col items-end justify-between h-full gap-8">
                     <span className="text-6xl font-light text-[var(--color-border)] leading-none select-none
                                      group-hover:text-[var(--color-vermillion)] transition-colors duration-300 opacity-30">
-                      {["一", "二", "三", "四", "五"][idx]}
+                      {["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"][idx] ?? idx + 1}
                     </span>
                     <span className="text-xs text-[var(--color-ink-muted)] tracking-widest
                                      translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100

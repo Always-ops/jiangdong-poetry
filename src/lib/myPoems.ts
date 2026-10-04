@@ -12,6 +12,18 @@ export interface MyPoem {
 
 export const myPoems: MyPoem[] = [
   {
+    id: "xi-yang-hong",
+    title: "夕阳红",
+    form: "五言绝句",
+    tags: ["夕阳"],
+    lines: [
+      "日绽烁无尽",
+      "琉璃碎诸土",
+      "乘愿乘业别",
+      "共承地天浮",
+    ],
+  },
+  {
     id: "chan-zong-1",
     title: "禅宗",
     subtitle: "一",
