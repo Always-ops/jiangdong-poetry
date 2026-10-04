@@ -25,10 +25,10 @@ export const myPoems: MyPoem[] = [
       "乘愿乘业别",
       "共承地天浮",
     ],
-    image: "/xi-yang-hong-v3.webp",
+    image: "/xi-yang-hong-portrait.webp",
     imageAlt: "金橙色落日照亮层叠云带，深色树冠与村庄延伸至远处，在暮色中与天空相融。",
-    imageWidth: 1536,
-    imageHeight: 1024,
+    imageWidth: 1024,
+    imageHeight: 1536,
   },
   {
     id: "chan-zong-1",
