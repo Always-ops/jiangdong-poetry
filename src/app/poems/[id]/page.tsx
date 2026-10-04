@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
+import { asset } from "@/lib/asset";
 import { myPoems } from "@/lib/myPoems";
 import type { Metadata } from "next";
 
@@ -86,6 +88,21 @@ export default async function PoemDetailPage(props: PageProps<"/poems/[id]">) {
               </p>
             ))}
           </div>
+
+          {/* 诗意配图 */}
+          {poem.image && (
+            <figure className="anim-fade mt-12 border border-[var(--color-border)] p-2 md:p-3"
+                    style={{ animationDelay: `${0.4 + poem.lines.length * 0.1}s` }}>
+              <Image
+                src={asset(poem.image)}
+                alt={poem.imageAlt ?? `${poem.title}配图`}
+                width={poem.imageWidth ?? 1536}
+                height={poem.imageHeight ?? 1024}
+                sizes="(max-width: 672px) calc(100vw - 66px), 598px"
+                className="block w-full h-auto"
+              />
+            </figure>
+          )}
 
           {/* 注解 — 直接显示 */}
           {poem.note && (
