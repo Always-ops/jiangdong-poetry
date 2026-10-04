@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 import type { MyPoem } from "@/lib/myPoems";
 
 export default function QijueMobileSection({ poem }: { poem: MyPoem }) {
@@ -26,7 +27,7 @@ export default function QijueMobileSection({ poem }: { poem: MyPoem }) {
     >
       {/* 背景图满铺 */}
       <Image
-        src="/tuibei-46.png"
+        src={asset("/tuibei-46.png")}
         alt="推背图第四十六象"
         fill
         className="object-cover"
@@ -124,7 +125,7 @@ export default function QijueMobileSection({ poem }: { poem: MyPoem }) {
       </p>
 
       {/* 音频 — 等MP3文件准备好后替换文件名 */}
-      <audio ref={audioRef} src="/qijue.mp3" loop />
+      <audio ref={audioRef} src={asset("/qijue.mp3")} loop />
     </div>
   );
 }

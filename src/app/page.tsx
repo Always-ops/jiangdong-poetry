@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 import { myPoems } from "@/lib/myPoems";
 import { masters } from "@/lib/masters";
 import MasterCard from "@/components/MasterCard";
@@ -97,7 +98,7 @@ export default function HomePage() {
           {/* 推背图 — 右侧绝对定位 */}
           <div className="absolute top-[18%] bottom-[4%] left-[45%] right-[3%] z-0">
             <Image
-              src="/tuibei-46.png"
+              src={asset("/tuibei-46.png")}
               alt="推背图第四十六象 — 有一军人身带弓"
               fill
               className="object-contain"
@@ -192,7 +193,7 @@ export default function HomePage() {
         {/* 配图 — 桌面显示，手机隐藏 */}
         <div className="hidden md:block absolute top-[30%] bottom-[4%] left-[48%] right-[3%] z-0">
           <Image
-            src="/yuewang-tai.png"
+            src={asset("/yuewang-tai.png")}
             alt="登会稽越王台"
             fill
             className="object-contain"
@@ -260,7 +261,7 @@ export default function HomePage() {
           {/* 手机端配图 */}
           <Reveal delay={800} className="block md:hidden mt-10 relative w-full h-[80vw]">
             <Image
-              src="/yuewang-tai.png"
+              src={asset("/yuewang-tai.png")}
               alt="登会稽越王台"
               fill
               className="object-contain"
